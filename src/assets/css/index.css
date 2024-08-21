@@ -1,0 +1,547 @@
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+	
+:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+		--blush-red: #ee4140;
+		--neon-green: #b3e823;
+  		--purple: #8f7cff;
+  		--white: #f7f7f7;
+		--background: #070707;
+	}
+	
+html {
+		font-family: system-ui, sans-serif;
+		background: var(--background);
+		background-size: 224px;
+	}
+
+#cursor {
+  position: fixed;
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#cursor-border {
+  --size: 50px;
+  position: fixed;
+  top: calc(var(--size) / -2);
+  left: calc(var(--size) / -2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px white;
+  pointer-events: none;
+  transition: top 0.15s ease-out, left 0.15s ease-out, width 0.15s ease-out,
+  height 0.15s ease-out, background-color 0.15s ease-out;
+  z-index: 999;
+}
+
+
+@font-face {
+    font-family: 'Stretch Pro';
+    src:  url(https://fonts.cdnfonts.com/css/stretch-pro) format("truetype");
+
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+@font-face {
+    font-family: 'stretch_proregular';
+    src: url('stretchpro-webfont.woff2') format('woff2'),
+         url('stretchpro-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'glancyrbold';
+    src: url('glancyr-glancyr-bold-700-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-bold-700-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyr_itabold_italic';
+    src: url('glancyr-glancyr-bold-italic-700-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-bold-italic-700-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrextra_light';
+    src: url('glancyr-glancyr-extra-light-100-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-extra-light-100-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrextra_light_italic';
+    src: url('glancyr-glancyr-extra-light-italic-100-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-extra-light-italic-100-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrlight';
+    src: url('glancyr-glancyr-light-200-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-light-200-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+@font-face {
+    font-family: 'glancyrlight_italic';
+    src: url('glancyr-glancyr-light-italic-200-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-light-italic-200-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+@font-face {
+    font-family: 'glancyrmedium';
+    src: url('glancyr-glancyr-medium-500-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-medium-500-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+@font-face {
+    font-family: 'glancyrmedium_italic';
+    src: url('glancyr-glancyr-medium-italic-500-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-medium-italic-500-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrregular';
+    src: url('glancyr-glancyr-regular-400-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-regular-400-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyr_italic';
+    src: url('glancyr-glancyr-regular-italic-400-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-regular-italic-400-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrsemi_bold';
+    src: url('glancyr-glancyr-semibold-600-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-semibold-600-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'glancyrsemi_bold_italic';
+    src: url('glancyr-glancyr-semibold-italic-600-webfont.woff2') format('woff2'),
+         url('glancyr-glancyr-semibold-italic-600-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+
+}
+
+@font-face {
+    font-family: 'glancyrthin';
+    src: url('glancyr-thin-webfont.woff2') format('woff2'),
+         url('glancyr-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'glancyrthin_italic';
+    src: url('glancyr-thinitalic-webfont.woff2') format('woff2'),
+         url('glancyr-thinitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'baileyregular';
+    src: url('bailey-webfont.woff2') format('woff2'),
+         url('bailey-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Reset */
+	*{
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		/* cursor: none; */
+	}
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu,  output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
+	ol, ul {
+		list-style: none;
+	}
+
+	body {
+		overflow-x: hidden;
+		line-height: 1;
+	}
+
+	:root {
+		--color-main: #8f7cff;
+		--color-main-second: #b3e823; 
+		--color-main-third: transparent;
+	  }
+
+	#animation-gradient {
+		background: linear-gradient(0deg, #00FF00, #b3e823, #ffffff, #00FF00); /* Add an additional color to create a seamless loop */
+		background-size: 100% 400%; /* Increase background-size to accommodate the additional color */
+		animation: gradient 6s ease infinite; /* Use linear animation for smooth transition */
+		height: 100vh;
+	}
+	
+	@keyframes gradient {
+		0% {
+			background-position: 0% 0%;
+		}
+		100% {
+			background-position: 0% 100%;
+		}
+	}
+
+	@layer base {
+		.font-outline-1 {
+		  -webkit-text-stroke: 1px #b3e823;
+		}
+		.font-outline-2 {
+		  -webkit-text-stroke: 2px #b3e823;
+		}
+	  }
+	
+
+/* Box Model */
+
+	*, *:before, *:after {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+
+/* Basic */
+
+	body, input, select, textarea {
+		color: #f7f7f7;
+	}
+
+	a {
+		-moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+		transition: color 0.2s ease, border-bottom-color 0.2s ease;
+		color: inherit;
+		text-decoration: none;
+	}
+
+		a:hover {
+			border-bottom-color: transparent;
+		}
+
+
+
+/* Footer Link Styling */
+
+		.text-wrapper {
+			display: flex;
+			justify-content: flex-start;
+			background: var(--neon-green);
+			overflow: hidden;
+		}
+	
+		.headline {
+			display: flex;
+			white-space: nowrap;
+			letter-spacing: 1px;
+			animation: move-rtl 5s linear infinite;
+		}
+	
+		@keyframes move-rtl {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(-100%);
+			}
+		}
+
+		
+		
+/* Button Style */
+
+.btn {
+	display: inline-block;
+	position: relative;
+	border-radius: 999rem;
+	cursor: pointer;
+	overflow: hidden;
+	background-color: transparent;
+}
+.btn:hover .btn__bg {
+	scale: 0.94;
+}
+.btn:hover .btn__text-out {
+	transition: transform 1s cubic-bezier(0.32, 0.99, 0.49, 0.99), opacity 0.4s;
+	transform: translateY(-33.333333%);
+	opacity: 0;
+}
+.btn:hover .btn__text-in {
+	transition: 1s all cubic-bezier(0.32, 0.99, 0.49, 0.99);
+	transform: translateY(0);
+	opacity: 1;
+}
+.btn:hover .btn__bg__layer-first, .btn:hover .btn__bg__layer-second, .btn:hover .btn__bg__layer-third {
+	border-radius: 60% 60% 0 0;
+	transform: translateY(1rem);
+}
+.btn:hover .btn__bg__layer-first {
+	transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 200ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 270ms;
+}
+.btn:hover .btn__bg__layer-second {
+	transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 300ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 470ms;
+}
+.btn:hover .btn__bg__layer-third {
+	transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 380ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 670ms;
+}
+.btn__text-out, .btn__text-in {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	inset: 0;
+	margin: auto;
+
+	z-index: 10;
+	letter-spacing: normal;
+}
+.btn__text-in {
+	opacity: 0;
+	transform: translateY(33.333333%);
+}
+.btn__bg {
+	height: inherit;
+	width: inherit;
+	transition: scale 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+	border: 1px solid #b3e823;
+	background-color: var(--color-main-third);
+	border-radius: 999rem;
+	overflow: hidden;
+}
+
+.btn2__bg {
+	height: inherit;
+	width: inherit;
+	transition: scale 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+	border: 1px solid whitesmoke;
+	background-color: var(--color-main-third);
+	border-radius: 999rem;
+	overflow: hidden;
+}
+
+
+.btn__bg__layer {
+	position: absolute;
+	display: block;
+	bottom: 0;
+	left: 50%;
+	translate: -50%;
+	border-radius: 999rem 999rem 0 0;
+	border: none;
+	width: 120%;
+	height: 200%;
+	z-index: 20;
+	transform: translateY(100%) translateX(0);
+}
+.btn__bg__layer-first {
+	background-color: var(--color-main);
+}
+.btn__bg__layer-second {
+	background-color: var(--color-main-second);
+}
+.btn__bg__layer-third {
+	background-color: var(--color-main-third);
+}
+
+
+/* Box Shadow */
+.box-shadow-footer{
+	text-shadow: 0px 4px 4px #000000;
+}
+
+.box-shadow-footer2{
+	text-shadow: 2px 6px 4px #000000;
+}
+
+.gradient-work {
+	background: linear-gradient(312.07deg, #B3E823 -35.99%, #FCE1E1 82.9%, #FFFFFF 172.6%);
+	background-clip: text;
+}
+
+
+
+.outlined-text {
+	color: #000000; /* Text color */
+	text-shadow: 
+		-1px -1px 0 var(--neon-green) ,  
+		 1px -1px 0 var(--neon-green) ,
+		-1px  1px 0 var(--neon-green) ,
+		 1px  1px 0 var(--neon-green) ; /* Shadow positions and colors */
+}
+
+.outlined-text-red {
+	color: #000000; /* Text color */
+	text-shadow: 
+		-1px -1px 0 var(--blush-red) ,  
+		 1px -1px 0 var(--blush-red) ,
+		-1px  1px 0 var(--blush-red) ,
+		 1px  1px 0 var(--blush-red) ; /* Shadow positions and colors */
+}
+
+.outlined-text-black {
+	color: var(--neon-green); /* Text color */
+	text-shadow: 
+		-5px -5px 0 var(--background) ,  
+		 5px -5px 0 var(--background) ,
+		-5px  5px 0 var(--background) ,
+		 5px  5px 0 var(--background) ; /* Shadow positions and colors */
+}
+
+.outlined-text-white {
+	color: black; /* Text color */
+	text-shadow: 
+		-1px -1px 0 #f7f7f7 ,  
+		 1px -1px 0 #f7f7f7 ,
+		-1px  1px 0 #f7f7f7 ,
+		 1px  1px 0 #f7f7f7 ; /* Shadow positions and colors */
+}
+
+
+
+
+.text-wrapper2 {
+	display: flex;
+	justify-content: flex-start;
+	background: #000000;
+	overflow: hidden;
+}
+
+.text-wrapper2 h1 {
+	white-space: nowrap;
+	letter-spacing: 1px;
+	animation: move-rtl 3s linear infinite;
+}
+
+@keyframes move-rtl2 {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
