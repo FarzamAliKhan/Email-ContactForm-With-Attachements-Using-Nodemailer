@@ -1,14 +1,13 @@
-require('dotenv').config();
-const express = require('express');
-// const multer = require('multer');
-const nodemailer = require('nodemailer');
-const multer  = require('multer')
-const cors = require('cors');
+import dotenv from 'dotenv';
+import express from 'express';
+import nodemailer from 'nodemailer';
+import multer from 'multer';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
-const bodyParser = require('body-parser');
+
 
 const app = express();
-// const upload = multer();
 
 // Load environment variables user and pass
 const USER = process.env.USER;

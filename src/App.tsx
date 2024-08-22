@@ -1,15 +1,14 @@
-import { useState } from 'react'
 import './App.css'
+import { ContactComp } from './components/ContactComp'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
 
       <div className=" h-svh w-svh" data-cursor="pointer">
-
-        
+        <ContactComp/>
       </div>
      
     </>

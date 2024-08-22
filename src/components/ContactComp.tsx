@@ -4,7 +4,7 @@ import {  motion } from 'framer-motion';
 import Swal from 'sweetalert2'
 
 import hi from '../assets/images/hi.svg';
-import paperclip from '..assets/images/paperclip.svg';
+import paperclip from '../assets/images/paperclip.svg';
 
 
 type Interest = "WEBSITE" | "LOGO AND BRANDING" | "UI/UX DESIGN" | "MOTION GRAPHICS" | "3D GRAPHICS" | "ML SOLUTIONS" | "DESIGN SOLUTIONS" | "WEB 3.0 DEVELOPMENT" | "MARKETING" | "OTHER";
