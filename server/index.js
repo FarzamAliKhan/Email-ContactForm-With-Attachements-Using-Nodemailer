@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000;
 //MIDDLEWARE 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://node-js-email-contact-form-attachments-2a56.vercel.app/', // frontend URL
+    origin: 'https://node-js-email-contact-form-attachments-2a56.vercel.app', // frontend URL
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization'
   }));
