@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {  motion } from 'framer-motion';
 import Swal from 'sweetalert2'
 
@@ -15,8 +15,10 @@ export const ContactComp = () => {
   const [selectedInterests, setSelectedInterests] = useState<Interest[]>([]);
   const [selectedBudget, setSelectedBudget] = useState<Budget | "">("");
   const [loading, setLoading] = useState(false);
-
   const [fileName, setFileName] = useState('');
+
+  const [testEmail, setTestEmail] = useState('');
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -110,40 +112,25 @@ export const ContactComp = () => {
 
   }
 
+  useEffect(() => {
 
-  // send mail with webforms
-  // const onSubmit = async (event: any) => {
-  //     event.preventDefault();
-  //     const formData = new FormData(event.target);
+       fetch("https://localhost:3000/send")
+        .then ((res => {
+          if (!res.ok) {
+            throw new Error('HTTP FAILED, STATUS: ${res.status}')
+          }
+          else {
+            return res.json()
+          }
+        }))
+        .then ((data) => {
+          setTestEmail(data);
+        })
+        .catch((err) => {
+          console.error('ERROR fetching DATA ', err)
+        })
 
-  //     formData.append("access_key", "");
-  //     formData.append("Interests", selectedInterests.join(", "));
-
-
-  //     const object = Object.fromEntries(formData);
-  //     const json = JSON.stringify(object);
-
-  //     console.log('json: ',json);
-
-  //     const res = await fetch("https://api.web3forms.com/submit", {
-  //         method: "POST",
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //             Accept: "application/json"
-  //         },
-  //         body: json
-  //     }).then((res) => res.json());
-
-  //     if (res.success) {
-  //         setShowOverlay(true); // Show overlay on success
-  //     }
-  // };
-
-  // const closeOverlay = () => {
-  //     setShowOverlay(false);
-  // };
-
-
+  },[])
 
   console.log('interest: ',selectedInterests);
   console.log('budget: ',selectedBudget);
@@ -159,8 +146,7 @@ export const ContactComp = () => {
               CONTACT US
             </button>
           </div>
-          {/* Crop the Lottie Animation Hi to size */}
-    <div className='px-5 sm:px-24'>
+          <div className='px-5 sm:px-24'>
             <div className="flex items-end gap-5 relative">  
               {/* <Lottie src='src/assets/videos/hi-animated.json' style={{ width: '550px', display: 'absolute', zIndex: '0'}} ></Lottie> */}
               <img className="mb-5 w-[150px] sm:w-[212px]" src={hi} alt="" />
@@ -312,8 +298,9 @@ export const ContactComp = () => {
             </div>
             
           </div>
-    </div>
-        <div className="w-[35%] sm:pt-14 ">
+        </div>
+        <div className="w-[35%] text-black sm:pt-14 ">
+          { (testEmail !== '' ) ? <h1>{testEmail}</h1> : <h1>ERROR API</h1> }
           
         </div>
       </div>
