@@ -286,7 +286,7 @@ export const ContactComp = () => {
         </div>
         <div className="w-[35%] text-black sm:pt-32 ">
           <h1 className="text-black mb-8 font-glancyrLight italic text-base text-right p-16">Go to <a className=' hover:text-real-neon-green text-cyan-600' target='_blank' href="https://www.mailticking.com/">MailTicking (click here)</a>, generate a temporary email, <br/> enter it in Test Email for demo and recieve mail.</h1>
-          <h1 className="text-black mb-8 font-glancyrLight italic text-base text-right pr-16">To configure recieving mails own your Email/Gmail, remove Test Email field. <br/><span className=' text-cyan-600'>Generate Gmail App Password</span>, add credentials in Nodemailer Auth.</h1>
+          <h1 className="text-black mb-8 font-glancyrLight italic text-base text-right pr-16">To configure recieving mails own your Email/Gmail, remove Test Email field. <br/><a className=' hover:text-real-neon-green text-cyan-600' target='_blank' href="https://support.google.com/mail/answer/185833?hl=en">Generate Gmail App Password (click here)</a>, add credentials in Nodemailer Auth.</h1>
         </div>
       </div>
       
