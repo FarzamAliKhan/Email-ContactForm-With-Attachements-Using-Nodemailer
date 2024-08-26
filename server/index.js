@@ -45,8 +45,6 @@ var upload = multer({
 
 
 
-
-
 // Configure Nodemailer transporter
 
 // FIRST CREATE APP Passwords for your Google Account, add email where you want the notification in user, and App Paswword in pass, real pass will not work
