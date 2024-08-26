@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 // multer to store attachment locally (will delete later after sending mail)
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './tmp')
-    },
+      cb(null, './tmp/')                               //locally we can put files in a /tmp temporary folder
+    },                                                // however for deployment, either use s3 bucket save it there and then serve it, or use VERCEL deployment blob storage (LIMIT: 4.5MB)
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
     }
