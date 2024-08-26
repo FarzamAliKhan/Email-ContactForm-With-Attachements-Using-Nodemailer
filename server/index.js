@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 // multer to store attachment locally (will delete later after sending mail)
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './uploads')
+      cb(null, './tmp')
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
@@ -40,7 +40,8 @@ const storage = multer.diskStorage({
   });
 
 var upload = multer({ 
-    storage: storage 
+    storage: storage,
+    limits: {fileSize: 10000000} //filelimitsize 10 MB
 }).single('attachment');
 
 
@@ -171,6 +172,9 @@ app.post('/send-email', async (req, res) => {
 
                 // Delete the file after sending the email
                 if (req.file) {
+                    if (fs.existsSync(req.file.path)) {
+                      console.log('FILE EXISTS')
+                    }
                     fs.unlink(req.file.path, (err) => {
                         if (err) console.error('Failed to delete uploaded file:', err);
                     });
