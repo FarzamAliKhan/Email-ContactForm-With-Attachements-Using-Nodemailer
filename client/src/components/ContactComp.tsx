@@ -31,8 +31,8 @@ export const ContactComp = () => {
       if (!prevInterests.includes(value)) {
         return [...prevInterests, value]; // Add the interest if it's not already selected
       }
-      // return prevInterests
-      return prevInterests.filter((item)=> item !== value ); // If already selected, return previous state unchanged
+      return prevInterests
+      // return prevInterests.filter((item)=> item !== value ); // If already selected, return previous state unchanged
     });
   };
 
@@ -81,7 +81,7 @@ export const ContactComp = () => {
     // console.log('json: ',json);
 
     try {
-      const res = await fetch("http://localhost:3000/send-email", {
+      const res = await fetch("https://node-js-email-contact-form-attachments-server.vercel.app/send-email", {
         method: "POST",
         body: formData
     }).then((res) => res.json());
