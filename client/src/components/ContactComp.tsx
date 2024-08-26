@@ -37,7 +37,6 @@ export const ContactComp = () => {
   };
 
 //TODO: handle deletion of selected values
-// Also there is a bug right now, whatever interests are being sent they are being sent in duplicates.
 
   const handleBudgetClick = (value: Budget) => {
       setSelectedBudget(value);
@@ -59,6 +58,8 @@ export const ContactComp = () => {
 
     formData.delete("Interests");
     formData.append("Interests", selectedInterests.join(", "));
+    formData.append('attachment', fileName); // Attach the file as FormData
+
     console.log('formData: ',formData);
 
     Swal.fire({
