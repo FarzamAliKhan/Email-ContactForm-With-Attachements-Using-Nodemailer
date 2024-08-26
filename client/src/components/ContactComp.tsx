@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {  motion } from 'framer-motion';
 import Swal from 'sweetalert2'
 
@@ -17,8 +17,6 @@ export const ContactComp = () => {
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState('');
 
-  const [testEmail, setTestEmail] = useState('');
-
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -31,11 +29,10 @@ export const ContactComp = () => {
   const handleInterestClick = (value: Interest) => {
     setSelectedInterests(prevInterests => {
       if (!prevInterests.includes(value)) {
-        console.log(`Selecting: ${value}`);
         return [...prevInterests, value]; // Add the interest if it's not already selected
       }
-      return prevInterests
-      // return prevInterests.filter((item)=>{item !== value}); // If already selected, return previous state unchanged
+      // return prevInterests
+      return prevInterests.filter((item)=> item !== value ); // If already selected, return previous state unchanged
     });
   };
 
@@ -60,6 +57,7 @@ export const ContactComp = () => {
 
     const formData = new FormData(event.target);
 
+    formData.delete("Interests");
     formData.append("Interests", selectedInterests.join(", "));
     console.log('formData: ',formData);
 
@@ -96,6 +94,9 @@ export const ContactComp = () => {
         showCloseButton: true,
         timerProgressBar: true,
         timer: 5000,
+        customClass: {
+          popup: ' font-glancyrLight'
+        }
       });
     }
   } catch {
@@ -105,32 +106,15 @@ export const ContactComp = () => {
         text: "Something went wrong!", 
         showCloseButton: true,
         timer: 5000, 
+        customClass: {
+          popup: ' font-glancyrLight'
+        }
       });
     } finally {
         setLoading(false);
     }
 
   }
-
-  useEffect(() => {
-
-       fetch("https://localhost:3000/send")
-        .then ((res => {
-          if (!res.ok) {
-            throw new Error('HTTP FAILED, STATUS: ${res.status}')
-          }
-          else {
-            return res.json()
-          }
-        }))
-        .then ((data) => {
-          setTestEmail(data);
-        })
-        .catch((err) => {
-          console.error('ERROR fetching DATA ', err)
-        })
-
-  },[])
 
   console.log('interest: ',selectedInterests);
   console.log('budget: ',selectedBudget);
@@ -140,8 +124,8 @@ export const ContactComp = () => {
     <> 
       
       <div className="h-auto pb-10 sm:pb-32 flex">
-        <div className="flex pt-10 flex-col w-[65%]">
-          <div className="h-auto px-5 pb-10 sm:px-12 sm:pb-0 sm:pt-32 flex flex-col mb-20">
+        <div className="flex flex-col w-[65%]">
+          <div className="h-auto px-5 pb-10 sm:px-12 sm:pb-0 sm:pt-16 flex flex-col mb-20">
             <button className="w-[291px] h-[74px] text-4xl rounded-full font-glancyrRegular bg-transparent outline outline-black outline-1 text-black px-4 py-1">
               CONTACT US
             </button>
@@ -153,8 +137,10 @@ export const ContactComp = () => {
               <h1 className="text-black font-glancyrLight italic text-8xl">Tell us</h1>
             </div>
             <h1 className="text-black mb-8 font-glancyrLight italic text-8xl">everything.</h1>
+            
             <form className="flex flex-col gap-4 mb-10" onSubmit={onSubmitNodeMailer} encType='multipart/form-data' >
               <div className="mb-16">
+                <input className="w-[50%] h-[50px] mb-16 text-black font-glancyrThin text-xs sm:text-xl bg-transparent outline-none border-b border-black" required type="text" name='TestEmail'  placeholder="Test Email (for demo & testing of web app)" />
                 <h3 className="text-black font-glancyrThin text-3xl mb-4">I'm interested in,</h3>
                 <div className="flex gap-3 flex-col w-[65%]">
                   <div className="text-left w-full gap-4 flex items-center font-glancyrThin text-xs sm:text-xl">
@@ -262,7 +248,7 @@ export const ContactComp = () => {
                 </div>
                 <div className="flex items-center gap-4 w-[65%] ">
                   <label className='flex'>
-                    <input type="file" name="attachment" style={{display: 'none'}} onChange= {handleFileChange} /> 
+                    <input type="file" name="attachment" style={{display: 'none'}} onChange= {handleFileChange} />
                     <motion.div whileHover={{ scale: 1.1}} className="cursor-pointer">
                       <img src={paperclip} alt="paperclip" />
                     </motion.div>
@@ -270,7 +256,6 @@ export const ContactComp = () => {
                    <h2 className='flex items-center leading-3 sm:w-[280px] truncate text-black font-glancyrThin pt-4 pb-4 text-xl border-b border-solid border-black'>
                      {fileName && (fileName) || <>Attach Document <span className='opacity-40 text-xl leading-3'> &nbsp; (optional) </span></>}
                   </h2>
-                  
                   
                   </label>
                   
@@ -299,9 +284,9 @@ export const ContactComp = () => {
             
           </div>
         </div>
-        <div className="w-[35%] text-black sm:pt-14 ">
-          { (testEmail !== '' ) ? <h1>{testEmail}</h1> : <h1>ERROR API</h1> }
-          
+        <div className="w-[35%] text-black sm:pt-32 ">
+          <h1 className="text-black mb-8 font-glancyrLight italic text-base text-right p-16">Go to <a className=' hover:text-real-neon-green text-cyan-600' target='_blank' href="https://www.mailticking.com/">MailTicking (click here)</a>, generate a temporary email, <br/> enter it in Test Email for demo and recieve mail.</h1>
+          <h1 className="text-black mb-8 font-glancyrLight italic text-base text-right pr-16">To configure recieving mails own your Email/Gmail, remove Test Email field. <br/><span className=' text-cyan-600'>Generate Gmail App Password</span>, add credentials in Nodemailer Auth.</h1>
         </div>
       </div>
       

@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000;
 //MIDDLEWARE 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:4321', // frontend URL
+    origin: 'http://localhost:5173', // frontend URL
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization'
   }));
@@ -62,7 +62,7 @@ const transporter = nodemailer.createTransport({
 
 
 app.get('/send-test-email', (req, res) => {
-  res.send({some:'json'})
+  res.send({email: 'json'})
 })
 
   
@@ -73,10 +73,10 @@ app.post('/send-email', async (req, res) => {
             return res.status(500).json({ success: false, error: 'File upload failed' });
         }
 
-        const { Interests, Name, Email, Description, budget } = req.body;
-        console.log('Interests:', Interests, 'Name:', Name, 'Email:', Email, 'Description:', Description, 'Budget:', budget);
+        const {TestEmail, Interests, Name, Email, Description, budget } = req.body;
+        console.log('TestEmail:',TestEmail ,'Interests:', Interests, 'Name:', Name, 'Email:', Email, 'Description:', Description, 'Budget:', budget);
 
-                //html template for mail recieved
+                //html template for mail recieved (can be customized)
         const EmailHtmlTemplate = `                                                   
         <!DOCTYPE html>
         <html lang="en">
@@ -149,7 +149,7 @@ app.post('/send-email', async (req, res) => {
         // Prepare the email message
         const message = {
             from: `${Name} <${Email}>`, // Using the client's name and email as SENDERS
-            to: 'seldhosbdrasekdbk+chan@gmail.com',  // Use any email address you want to recieve mail on, use USER (same mail) if you want notifications on your own address | USING www.mailticking.com email here for testing and demo purpose
+            to: TestEmail,  // Use any email address you want to recieve mail on, use (same mail) if you want notifications on your own address | USING www.mailticking.com email here for testing and demo purpose
             replyTo: Email, // Set reply-to to the client's email   (optional)
             subject: `NOTIFICATION: Message from ${Email}`,   //html template for mail recieved
             html: EmailHtmlTemplate,
