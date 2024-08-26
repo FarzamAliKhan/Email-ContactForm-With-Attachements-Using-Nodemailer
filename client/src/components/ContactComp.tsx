@@ -58,8 +58,7 @@ export const ContactComp = () => {
 
     formData.delete("Interests");
     formData.append("Interests", selectedInterests.join(", "));
-    formData.append('attachment', fileName); // Attach the file as FormData
-
+    
     console.log('formData: ',formData);
 
     Swal.fire({

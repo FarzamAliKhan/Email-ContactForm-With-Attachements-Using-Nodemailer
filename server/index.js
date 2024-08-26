@@ -5,6 +5,7 @@ import multer from 'multer';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+
 dotenv.config()
 
 const app = express();
@@ -32,7 +33,7 @@ app.use(bodyParser.json());
 // multer to store attachment locally (will delete later after sending mail)
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, tmpdir)    // '/tmp'                      //locally we can save files in a /tmp temporary folder
+      cb(null, './tmp')    //                       //locally we can save files in a /tmp temporary folder
     },                                                // however for deployment, either use s3 bucket save it there and then serve it, or use VERCEL deployment blob storage (LIMIT: 4.5MB)
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
@@ -72,7 +73,7 @@ app.post('/send-email', async (req, res) => {
             return res.status(500).json({ success: false, error: 'File upload failed' });
         }
 
-        const {TestEmail, Interests, Name, Email, Description, budget, attachment } = req.body;
+        const {TestEmail, Interests, Name, Email, Description, budget } = req.body;
         console.log('TestEmail:',TestEmail ,'Interests:', Interests, 'Name:', Name, 'Email:', Email, 'Description:', Description, 'Budget:', budget);
 
                 //html template for mail recieved (can be customized)
@@ -153,12 +154,11 @@ app.post('/send-email', async (req, res) => {
             subject: `NOTIFICATION: Message from ${Email}`,   //html template for mail recieved
             html: EmailHtmlTemplate,
             text: `Name: ${Name}\nDescription: ${Description}\nInterests: ${Interests}\nBudget: ${budget}`,   //(sending html overrides this)
-            attachments: attachment ? [
-              {
-                filename: 'attachment-file', // Modify the filename as needed
-                content: attachment, // Base64-encoded file content
-                encoding: 'base64', // Specify the encoding
-              },
+            attachments: req.file ? [
+                {
+                    filename: req.file.originalname,
+                    path: req.file.path,
+                }
             ] : []
         };
 
