@@ -22,13 +22,15 @@
 - body-parser (middleware to parse TCP header attached with http request)
 - React (frontend)
 
-## Demo
-  
-## Screenshots 🖼️
+## Demo 🖼️
 <div align= "center"> 
    
    <img src="/assets/Screenshots/Login.PNG" alt="Image Description" width="305"/> 
-   <img src="/assets/Screenshots/Signup.PNG" alt="Image Description" width="300"/>
+   <img src="/assets/Screensho
+
+https://github.com/user-attachments/assets/81e9ea9e-98eb-4154-b6c0-38aa37285645
+
+ts/Signup.PNG" alt="Image Description" width="300"/>
    <img src="/assets/Screenshots/student_attendance.PNG" alt="Image Description" width="335"/>
    
 </div>
