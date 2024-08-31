@@ -24,15 +24,9 @@
 
 ## Demo 🖼️
 <div align= "center"> 
-   
-   <img src="/assets/Screenshots/Login.PNG" alt="Image Description" width="305"/> 
-   <img src="/assets/Screensho
 
-https://github.com/user-attachments/assets/81e9ea9e-98eb-4154-b6c0-38aa37285645
+https://github.com/user-attachments/assets/330551f1-4ef2-45ea-8d68-4daf345f6534
 
-ts/Signup.PNG" alt="Image Description" width="300"/>
-   <img src="/assets/Screenshots/student_attendance.PNG" alt="Image Description" width="335"/>
-   
 </div>
 
 ## Contributions 🤝
@@ -46,8 +40,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 
 
-
-
-
-https://github.com/user-attachments/assets/330551f1-4ef2-45ea-8d68-4daf345f6534
 
