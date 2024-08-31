@@ -1,5 +1,5 @@
 <h1 align="center"> Send Emails + Attachments using Nodemailer with an aesthetic interface. </h1>
-<h2 align="center"> Useful in handling CONTACT FORMS on static websites using your own SERVER with attachments, instead of depending upon 3rd party solutions. </h2>
+<h2 align="center"> Useful in handling Conact Forms on websites using your own SERVER with attachments, instead of depending upon 3rd party solutions. </h2>
 
 <div align="center">
    
@@ -42,4 +42,12 @@ Suggestions & Contributions are always welcomed, raise an issue or contact me. @
 ## License 📒
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+
+
+
+
+
+https://github.com/user-attachments/assets/330551f1-4ef2-45ea-8d68-4daf345f6534
 
